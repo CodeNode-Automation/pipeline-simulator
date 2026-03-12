@@ -1,0 +1,38 @@
+{
+  "ProjectName": "Pipeline-Simulator",
+
+  "PsModules": ["Logging",
+    "Environment",
+    "SourceControl",
+    "Validation",
+    "Build",
+    "Test",
+    "Package",
+    "Report"
+  ],
+
+  "Folders": ["artifacts",
+    "build",
+    "config",
+    "logs"
+  ],
+
+  "BuildModules": [
+    "CoreEngine",
+    "PhysicsModule",
+    "InputSystem",
+    "RenderingEngine"
+  ],
+
+  "Tests": [
+    "MovementTest",
+    "PhysicsCollisionTest",
+    "InputTest",
+    "RenderingTest",
+    "NetworkSyncTest"
+  ],
+
+  "ArtifactsDirectory": "artifacts",
+
+  "LogsDirectory": "logs"
+}

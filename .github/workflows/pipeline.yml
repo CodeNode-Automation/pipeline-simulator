@@ -1,0 +1,52 @@
+#pipeline.yml
+name: Pipeline Simulator
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  # Opts into Node.js 24 to suppress deprecation warnings for actions/checkout and upload-artifact
+
+jobs:
+  run-pipeline:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup PowerShell
+        shell: pwsh
+        run: |
+          Write-Host "PowerShell environment ready"
+
+      - name: Run Pipeline
+        shell: pwsh
+        run: |
+          ./pipeline.ps1
+
+      - name: Upload Build Executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: build/
+
+      - name: Upload Release Packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts
+          path: artifacts/
+
+      - name: Upload Logs
+        uses: actions/upload-artifact@v4
+        if: always()        
+        with:
+          name: pipeline-logs
+          path: logs/
