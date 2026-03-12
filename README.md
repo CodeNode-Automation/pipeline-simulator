@@ -1,5 +1,5 @@
-<p align="center"> 
-    <img src="asset/codenode_automation_logo.jpg" width="350">
+<p align="center">
+  <img src="asset/CodeNode.gif" alt="Pipeline Simulator Demo" width="800">
 </p>
 
 <p align="center">
